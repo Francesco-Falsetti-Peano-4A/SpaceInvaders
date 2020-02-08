@@ -13,7 +13,6 @@ import java.awt.Color;
  * @author longhitano.stefano
  */
 public class Space extends Canvas {
-
     Space() {
         System.out.println("Setting canvas background and dimentions ");
         setBackground(Color.BLACK);
