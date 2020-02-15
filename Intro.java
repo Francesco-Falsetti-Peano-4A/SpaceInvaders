@@ -8,6 +8,8 @@ package spaceinvaders;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferStrategy;
 
 /**
  *
@@ -15,29 +17,37 @@ import java.awt.Graphics;
  */
 public class Intro extends Space {
 
-    private int i = 0;
+    private int i;
+    private BufferStrategy strategy;
 
     void run() throws InterruptedException {
+        createBufferStrategy(2);
+        strategy = getBufferStrategy();
         setBackground(Color.BLACK);
         setSize(800, 600);
-
-        for (i = 100; i >= 10; i -= 1) {
+        for (i = 200; i >= 15; i -= 1) {
             System.out.println("i: " + i);
-            this.repaint();
-            Thread.sleep(20);
+            paint();
+            Thread.sleep(10);
+        }
+        for (i = 0; i < 10; i++) {
+            System.out.println("i: " + i);
+            paint();
+
         }
     }
 
-    @Override
-    public void paint(Graphics g) {
-        // scrivi nel canvas la scritta in Rosso 
-        g.setColor(Color.red);
-        // Seleziona i Font della scritta (Bold) e la dimensione dei caratteri (40)
-        g.setFont(new Font("Bold", Font.PLAIN, 40+i));
-        // Scrivi partendo dalla posizione x=100 e y=100
-        g.drawString("Space Invaders", 100+i, 100+i);
-        g.setFont(new Font("Bold", Font.PLAIN, 10+i)); 
-        g.drawString("          by Francesco Falsetti", 110+i+i, 110+i+i);
+    public void paint() {
+        Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, 800, 600);
+        g.setColor(Color.pink);
+        g.setFont(new Font("Bold", Font.PLAIN, 40 + i));
+        g.drawString("Space Invaders", 100 + i, 100 + i);
+        g.setFont(new Font("Bold", Font.PLAIN, 10 + i));
+        g.drawString("          by Francesco Falsetti", 110 + i + i, 110 + i + i);
+        g.dispose();
+        strategy.show();
     }
 
 }
