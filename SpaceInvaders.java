@@ -7,12 +7,11 @@ package spaceinvaders;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-
 /**
  *
- * @author longhitano.stefano
+ * @author Franci
  */
-public class SpaceInvaders extends JFrame {
+public class SpaceInvaders  extends JFrame{
 
     public SpaceInvaders() throws InterruptedException {
         this.setVisible(true);
@@ -25,10 +24,10 @@ public class SpaceInvaders extends JFrame {
         // avvia l'introduzione
         intro.run();
     }
-
-    public static void main(String[] args) throws InterruptedException {
+    
+    public static void main(String[] args) throws InterruptedException{
         SpaceInvaders gioco = new SpaceInvaders();
         Space space = new Space();
     }
-
+    
 }
